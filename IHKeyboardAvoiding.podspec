@@ -14,7 +14,7 @@ If Autolayout is used then the constraints are animated, otherwise a CGAffine tr
                        DESC
   s.license          = 'MIT'
   s.author           = { 'Fraser Scott-Morrison' => 'fraserscottmorrison@me.com' }
-  s.source           = { :git => 'https://github.com/IdleHandsApps/IHKeyboardAvoiding.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/ForkOthersCode/IHKeyboardAvoiding.git', :tag => s.version.to_s }
   s.platform     = :ios, '5.0'
   s.source_files = 'Classes/*.{h,m}'
   s.public_header_files = 'Classes/*.h'
