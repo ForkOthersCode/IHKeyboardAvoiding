@@ -339,7 +339,14 @@ static IHKeyboardAvoidingBlock _avoidingBlock;
     UIWindow *window = [UIApplication sharedApplication].windows[0];
     [window.rootViewController.view endEditing:YES];
 }
-
+#pragma mark -----我的修改
++(void)setAvoidingViewUsesAutoLayout:(BOOL)useAutoLayout{
+    if (useAutoLayout) {
+        _avoidingViewUsesAutoLayout = _avoidingView.superview.constraints.count > 0;
+    }else{
+        _avoidingViewUsesAutoLayout=useAutoLayout;
+    }
+}
 #pragma mark - deprecated
 
 + (void)setAvoidingView:(UIView *)avoidingView withTarget:(UIView *)targetView {

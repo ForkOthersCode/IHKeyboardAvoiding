@@ -50,6 +50,11 @@ typedef void (^IHKeyboardAvoidingBlock)(BOOL isShowing, float duration, float di
 // utility method to find out if the keyboard is visible. Works for docked, undocked and split keyboards
 + (BOOL)isKeyboardVisible;
 
+#pragma mark -----我的修改
+/**
+ *一经配置最好不要后续继续修改,防止出错；默认是自行判断的（特殊情况下必须禁用，这样会强行更新位置！）
+ */
++(void)setAvoidingViewUsesAutoLayout:(BOOL)useAutoLayout;
 
 // deprecated
 + (void)setAvoidingView:(UIView *)avoidingView withTarget:(UIView *)targetView NS_DEPRECATED_IOS(2_0,5_0); // use setAvoidingView:(UIView *)avoidingView; or setAvoidingView:(UIView *)avoidingView withTrigger:(UIView *)triggerView;
