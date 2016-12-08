@@ -238,7 +238,9 @@ static IHKeyboardAvoidingBlock _avoidingBlock;
 + (void)setAvoidingView:(UIView *)avoidingView withTriggerView:(UIView *)triggerView;
 {
     [self init];
-    
+    if (!avoidingView) {
+        return;
+    }
     [_triggerViews removeAllObjects];
     [_triggerViews addObject:triggerView];
     _avoidingView = avoidingView;
@@ -348,6 +350,10 @@ static IHKeyboardAvoidingBlock _avoidingBlock;
     }
 }
 + (void)setAvoidingView:(UIView *)avoidingView withTriggerView:(UIView *)triggerView userAutoLayout:(BOOL)useAutolayout{
+    [self init];
+    if (!avoidingView) {
+            return;
+    }
     [_triggerViews removeAllObjects];
     [_triggerViews addObject:triggerView];
     _avoidingView = avoidingView;
