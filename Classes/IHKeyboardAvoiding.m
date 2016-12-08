@@ -347,6 +347,23 @@ static IHKeyboardAvoidingBlock _avoidingBlock;
         _avoidingViewUsesAutoLayout=useAutoLayout;
     }
 }
++ (void)setAvoidingView:(UIView *)avoidingView withTriggerView:(UIView *)triggerView userAutoLayout:(BOOL)useAutolayout{
+    [_triggerViews removeAllObjects];
+    [_triggerViews addObject:triggerView];
+    _avoidingView = avoidingView;
+    if (useAutolayout==NO) {
+        _avoidingViewUsesAutoLayout=NO;
+    }else{
+        _avoidingViewUsesAutoLayout = _avoidingView.superview.constraints.count > 0;
+    }
+    _paddingCurrent = _padding;
+    _avoidingBlock = nil;
+    
+    if (_isKeyboardVisible) { // perform avoiding immediately
+        [self didChange:_lastNotification];
+    }
+
+}
 #pragma mark - deprecated
 
 + (void)setAvoidingView:(UIView *)avoidingView withTarget:(UIView *)targetView {
