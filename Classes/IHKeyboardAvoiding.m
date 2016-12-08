@@ -80,11 +80,11 @@ static IHKeyboardAvoidingBlock _avoidingBlock;
             //showing and docked
             if (triggerView) {
                 float diff = 0;
-                if (keyboardHeightDiff != 0) {
+               /* if (keyboardHeightDiff != 0) {
                     // if keyboard height is changing and avoidingView is currently moved
                     diff = keyboardHeightDiff;
                 }
-                else {
+                else {*/
                     CGPoint originInWindow = [triggerView convertPoint:[self getOrientedRect:triggerView.bounds].origin toView:nil];
                     
                     switch ([[UIApplication sharedApplication] statusBarOrientation]) {
@@ -100,11 +100,12 @@ static IHKeyboardAvoidingBlock _avoidingBlock;
                             break;
                         default:
                             break;
-                    }
+//                    }
                 }
                 
-                if (diff < _buffer || keyboardHeightDiff != 0 || _avoidingBlock) {
-                    
+//                if (diff < _buffer || keyboardHeightDiff != 0 || _avoidingBlock) {
+                if (diff < _buffer ) {
+    
                     float displacement = ( isPortrait ? -keyboardFrame.size.height : -keyboardFrame.size.width);
                     float delay = 0;
                     
@@ -175,12 +176,11 @@ static IHKeyboardAvoidingBlock _avoidingBlock;
                                          }
                                      }
                                      completion:nil];
-                    
-                    if (_avoidingBlock) {
-                        _avoidingBlock(isKeyBoardShowing, animationDuration, keyboardFrame.size.height, animationOptions);
-                    }
-                    
                 }
+                if (_avoidingBlock) {
+                    _avoidingBlock(isKeyBoardShowing, animationDuration, keyboardFrame.size.height, animationOptions);
+                }
+
             }
         }
         
